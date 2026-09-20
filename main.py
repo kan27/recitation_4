@@ -1,3 +1,4 @@
+#Srikanya Balaji Garuda
 # recitation-04
 
 from collections import defaultdict
@@ -37,6 +38,7 @@ def word_count_map(doc):
     [('i', 1), ('am', 1), ('sam', 1), ('i', 1), ('am', 1)]
     """
     ###TODO
+    return [(token, 1) for token in doc.split()]
     pass
 
 def word_count_reduce(group):
@@ -52,6 +54,10 @@ def word_count_reduce(group):
     NOTE: you should use call the `reduce` function here.
     """
     ###TODO
+    token = group[0]
+    counts = group[1]
+    total = reduce(plus, 0, counts)
+    return (token, total)
     pass
 
 def iterate(f, x, a):
@@ -119,4 +125,12 @@ def sentiment_map(doc,
     [('negative', 1), ('negative', 1)]
     """
     ###TODO
+    tokens = doc.split()
+    result = []
+    for token in tokens:
+        if token in pos_terms:
+            result.append(('positive', 1))
+        elif token in neg_terms:
+            result.append(('negative', 1))
+    return result
     pass
